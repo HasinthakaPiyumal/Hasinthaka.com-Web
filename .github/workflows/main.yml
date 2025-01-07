@@ -28,6 +28,6 @@ jobs:
           username: ${{ secrets.username }}
           password: ${{ secrets.password }}
           dangerous-clean-slate: true
-          local-dir: ./dist/
+          local-dir: ./out/
           exclude: |
             - .htaccess
