@@ -224,13 +224,19 @@ const CollisionMechanism = React.forwardRef<
 CollisionMechanism.displayName = "CollisionMechanism";
 
 const Explosion = ({ ...props }: React.HTMLProps<HTMLDivElement>) => {
-    const spans = Array.from({ length: 20 }, (_, index) => ({
-        id: index,
-        initialX: 0,
-        initialY: 0,
-        directionX: Math.floor(Math.random() * 80 - 40),
-        directionY: Math.floor(Math.random() * -50 - 10),
-    }));
+    const [spans, setSpans] = useState<{ id: number; initialX: number; initialY: number; directionX: number; directionY: number; }[]>([]);
+
+    useEffect(() => {
+        setSpans(
+            Array.from({ length: 20 }, (_, index) => ({
+                id: index,
+                initialX: 0,
+                initialY: 0,
+                directionX: Math.floor(Math.random() * 80 - 40),
+                directionY: Math.floor(Math.random() * -50 - 10),
+            }))
+        );
+    }, []);
 
     return (
         <div {...props} className={cn("absolute z-50 h-2 w-2", props.className)}>
