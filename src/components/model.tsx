@@ -1,11 +1,18 @@
 'use client'
 import React, { useEffect, useRef, useState } from 'react'
 import { Html, useAnimations, useFBX, useGLTF } from '@react-three/drei'
-import { AnimationAction, AnimationClip, Box3, BoxHelper, Group, Vector3 } from 'three'
+import { AnimationAction, AnimationClip, Box3, BoxHelper, Group, Vector3, Object3D } from 'three'
 import { useFrame, useGraph } from '@react-three/fiber'
 import { SkeletonUtils } from 'three-stdlib'
+
 const file = '/Hasinthaka_v1.13(with wave animation).glb'
-const Model = (props: any) => {
+interface ModelProps {
+    scale?: number | [number, number, number];
+    position?: [number, number, number];
+    rotation?: [number, number, number];
+}
+
+const Model = (props: ModelProps) => {
     const group = useRef<Group>(null)
     const { scene } = useGLTF(file)
     const clone = React.useMemo(() => SkeletonUtils.clone(scene), [scene])

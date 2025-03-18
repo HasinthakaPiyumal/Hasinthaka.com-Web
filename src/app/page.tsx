@@ -3,11 +3,6 @@ import React from 'react'
 import Hero from './home/Hero'
 import { FloatingNav } from '@/components/ui/floating-navbar'
 import { IconHome, IconUser, IconMessage, IconCode } from '@tabler/icons-react'
-import { Canvas } from '@react-three/fiber'
-import { PresentationControls, Stage } from '@react-three/drei'
-import Model from '@/components/model'
-import Avatar from './home/Avatar'
-import ModelViewer from './home/ModelViewer'
 const page = () => {
   const navItems = [
     {
