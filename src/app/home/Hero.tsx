@@ -2,9 +2,16 @@
 import { BackgroundBeamsWithCollision } from '@/components/ui/background-beams-with-collision'
 import { Spotlight } from '@/components/ui/Spotlight'
 import { SpotlightNew } from '@/components/ui/spotlight-new'
-import { TypewriterEffect } from '@/components/ui/typewriter-effect'
-import React, { useState, useEffect } from 'react'
-const Hero = () => {
+import { Canvas, useFrame, useThree, Vector3 } from '@react-three/fiber'
+import { OrbitControls, PresentationControls, Stage } from '@react-three/drei'
+import React, { useState, useEffect, useRef } from 'react'
+import { Mesh } from 'three'
+import Model from '@/components/model'
+import Avatar from './Avatar'
+import ModelViewer from './ModelViewer'
+
+const TypeWriterEffect = () => {
+
     const words = ["Mobile Developer", "Machine Learning Enthusiast", "Full Stack Developer"]
     const [currentWordIndex, setCurrentWordIndex] = useState(0)
     const [currentText, setCurrentText] = useState("")
@@ -45,6 +52,16 @@ const Hero = () => {
 
         return () => clearTimeout(timer)
     }, [currentText, currentWordIndex, isDeleting, typingSpeed, words])
+
+    return <h1 className="text-3xl font-bold mb-4">
+        I&apos;m a{" "}
+        <span className="bg-clip-text text-primary inline-block min-w-0">
+            {currentText}
+            <span className={`border-r-4 border-primary ml-1 ${isTyping || isDeleting ? '' : 'animate-blink'}`}></span>
+        </span>
+    </h1>
+}
+const Hero = () => {
     return (
         <div className='h-screen relative'>
             <SpotlightNew />
@@ -59,8 +76,8 @@ const Hero = () => {
                 <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black-100 bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
                 <div className="text-4xl sm:text-7xl font-bold relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 py-8">
                     <BackgroundBeamsWithCollision className='h-screen md:h-[100vh] w-[100vw] top-0 left-0'>
-                        <div className='h-screen w-full flex items-center justify-center'>
-                            <div className="grid grid-cols-2 gap-4">
+                        <div className='h-screen w-full flex items-between justify-center'>
+                            <div className="flex flex-col md:flex-row gap-4 justify-between items-center">
                                 <div className='text-white'>
                                     <h1 className='text-6xl font-bold mb-4'>
                                         Hi, It&apos;s{" "}
@@ -68,16 +85,10 @@ const Hero = () => {
                                             Hasinthaka
                                         </span>
                                     </h1>
-                                    <h1 className="text-3xl font-bold mb-4">
-                                        I&apos;m a{" "}
-                                        <span className="bg-clip-text text-primary inline-block min-w-0">
-                                            {currentText}
-                                            <span className={`border-r-4 border-primary ml-1 ${isTyping || isDeleting ? '' : 'animate-blink'}`}></span>
-                                        </span>
-                                    </h1>
+                                    <TypeWriterEffect />
                                 </div>
-                                <div className='text-white'>
-                                    asdasd
+                                <div className='text-white h-[80vh]  w-[50%]'>
+                                    <ModelViewer />
                                 </div>
                             </div>
                         </div>
@@ -87,6 +98,25 @@ const Hero = () => {
 
 
         </div>
+    )
+}
+
+const Cube = ({ position, color, size }: { position: Vector3, color: string, size: number }) => {
+    const ref = useRef<Mesh>(null)
+    const [isHovering, setIsHovering] = useState(false)
+    // useFrame((state, delta) => {
+    //     if (ref.current) {
+    //         ref.current.rotation.x += delta
+    //         // ref.current.rotation.y += delta
+    //         // ref.current.rotation.z += delta
+    //     }
+    // })
+    return (
+        <mesh ref={ref} position={position} scale={isHovering ? 0.9 : 1} onPointerEnter={(event) => { event.stopPropagation(); setIsHovering(true) }} onPointerLeave={(event) => setIsHovering(false)}>
+            <boxGeometry args={[size, size, size]} />
+            <meshStandardMaterial color={isHovering ? 'orange' : color} wireframe />
+            <OrbitControls />
+        </mesh>
     )
 }
 

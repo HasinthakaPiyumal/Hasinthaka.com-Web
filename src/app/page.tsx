@@ -1,7 +1,13 @@
+'use client'
 import React from 'react'
 import Hero from './home/Hero'
 import { FloatingNav } from '@/components/ui/floating-navbar'
 import { IconHome, IconUser, IconMessage, IconCode } from '@tabler/icons-react'
+import { Canvas } from '@react-three/fiber'
+import { PresentationControls, Stage } from '@react-three/drei'
+import Model from '@/components/model'
+import Avatar from './home/Avatar'
+import ModelViewer from './home/ModelViewer'
 const page = () => {
   const navItems = [
     {
@@ -29,7 +35,7 @@ const page = () => {
   ];
   return (
     <main
-      className='relative bg-black-100 flex justify-center items-center flex-col overflow-hidden mx-auto sm:px-10 px-5'>
+      className='relative h-screen bg-black-100 flex justify-center items-center flex-col overflow-hidden mx-auto sm:px-10 px-5'>
       <Hero />
       <div className='relative top-0 left-0 w-full h-full z-50'>
         <FloatingNav navItems={navItems} />
