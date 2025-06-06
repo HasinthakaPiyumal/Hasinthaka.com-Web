@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
     motion,
     AnimatePresence,
@@ -8,10 +8,12 @@ import {
 } from "motion/react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export const FloatingNav = ({
     navItems,
     className,
+    visible
 }: {
     navItems: {
         name: string;
@@ -19,29 +21,30 @@ export const FloatingNav = ({
         icon?: JSX.Element;
     }[];
     className?: string;
+    visible: boolean
 }) => {
     const { scrollYProgress } = useScroll();
+    // const [visible, setVisible] = useState(true);
+    const [previous, setPrevious] = useState(0);
 
-    const [visible, setVisible] = useState(true);
 
-    useMotionValueEvent(scrollYProgress, "change", (current) => {
-        // Check if current is not undefined and is a number
-        console.log(current);
-        if (typeof current === "number") {
-            const direction = current! - scrollYProgress.getPrevious()!;
-            console.log(direction);
+    // useMotionValueEvent(scrollYProgress, "change", (current) => {
+    //     // Check if current is not undefined and is a number
+    //     console.log(current);
+    //     if (typeof current === "number") {
+    //         const direction = current! - scrollYProgress.getPrevious()!;
 
-            if (scrollYProgress.get() < 0.05 || scrollYProgress.get() == 1) {
-                setVisible(true);
-            } else {
-                if (direction < 0) {
-                    setVisible(true);
-                } else {
-                    setVisible(false);
-                }
-            }
-        }
-    });
+    //         if (scrollYProgress.get() < 0.05 || scrollYProgress.get() == 1) {
+    //             setVisible(true);
+    //         } else {
+    //             if (direction < 0) {
+    //                 setVisible(true);
+    //             } else {
+    //                 setVisible(false);
+    //             }
+    //         }
+    //     }
+    // });
 
     return (
         <AnimatePresence mode="wait">

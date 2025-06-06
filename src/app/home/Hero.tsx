@@ -7,6 +7,8 @@ import { OrbitControls, } from '@react-three/drei'
 import React, { useState, useEffect, useRef } from 'react'
 import { Mesh } from 'three'
 import ModelViewer from './ModelViewer'
+import { Button } from '@/components/ui/button'
+import { IconBrandWhatsapp } from '@tabler/icons-react'
 
 const TypeWriterEffect = () => {
 
@@ -61,7 +63,7 @@ const TypeWriterEffect = () => {
 }
 const Hero = () => {
     return (
-        <div className='h-screen relative'>
+        <div className='h-screen relative width-full'>
             <SpotlightNew />
             {/* <div>
                 <Spotlight className='-top-40 -left-10 md:-left-32 md:-top-20 h-screen' fill='white' />
@@ -72,25 +74,40 @@ const Hero = () => {
             <div className="h-screen w-full dark:bg-black-100 bg-white  dark:bg-dot-white/[0.1] bg-dot-black/[0.2] relative flex items-center justify-center">
                 {/* Radial gradient for the container to give a faded look */}
                 <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black-100 bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
-                <div className="text-4xl sm:text-7xl font-bold relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 py-8">
-                    <BackgroundBeamsWithCollision className='h-screen md:h-[100vh] w-[100vw] top-0 left-0'>
-                        <div className='h-screen w-full flex items-between justify-center'>
-                            <div className="flex flex-col md:flex-row gap-4 justify-between items-center">
-                                <div className='text-white'>
-                                    <h1 className='text-6xl font-bold mb-4'>
-                                        Hi, It&apos;s{" "}
-                                        <span className='text-primary'>
-                                            Hasinthaka
-                                        </span>
-                                    </h1>
-                                    <TypeWriterEffect />
-                                </div>
-                                <div className='text-white h-[80vh]  w-[50%]'>
-                                    <ModelViewer />
+                <div className="w-full text-4xl sm:text-7xl font-bold relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 py-8">
+                    {/* <BackgroundBeamsWithCollision className='h-screen md:h-[100vh] w-full top-0 left-0'>
+                       
+                    </BackgroundBeamsWithCollision> */}
+                    <div className='h-screen w-full flex items-between justify-center'>
+                        <div className="flex items-center justify-between w-full max-w-7xl">
+                            <div className='text-white w-[50%]'>
+                                <div className='flex h-[60px]'></div>
+                                <h1 className='text-6xl font-bold mb-4'>
+                                    Hi, It&apos;s{" "}
+                                    <span className='text-primary'>
+                                        Hasinthaka
+                                    </span>
+                                </h1>
+                                <TypeWriterEffect />
+                                <p className="text-gray-300 max-w-xl text-base font-light">
+                                    Software Engineering undergraduate at University of Kelaniya, passionate about tech and innovation.
+                                </p>
+
+                                <div className="flex gap-4 mt-12">
+                                    <Button>
+                                        Download CV
+                                    </Button>
+                                    <Button variant={'outline'}>
+                                        <IconBrandWhatsapp />
+                                        Contact
+                                    </Button>
                                 </div>
                             </div>
+                            <div className='text-white w-[50%]'>
+
+                            </div>
                         </div>
-                    </BackgroundBeamsWithCollision>
+                    </div>
                 </div>
             </div>
 

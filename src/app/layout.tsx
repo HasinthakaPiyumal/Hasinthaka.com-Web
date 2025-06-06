@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./../styles/globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
+import ModelViewer from "./home/ModelViewer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,7 +26,8 @@ export default function RootLayout({
             defaultTheme="dark"
             enableSystem
             disableTransitionOnChange
-          >{children}
+          >
+            {children}
           </ThemeProvider>
         </div>
       </body>

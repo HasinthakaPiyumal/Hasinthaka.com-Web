@@ -84,3 +84,27 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050a1c;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e3a8a;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2563eb;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
