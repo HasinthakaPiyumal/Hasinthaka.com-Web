@@ -7,6 +7,9 @@ import FuelMaster from "@/assets/images/projects/fuel-master.png"
 import Restaurant from "@/assets/images/projects/helataure.png"
 import FarmIt from "@/assets/images/projects/farm-it.png"
 import BotCpanel from "@/assets/images/projects/bot-cpanel.png"
+import HabitFlow from "@/assets/images/projects/habit-flow.jpg"
+import GameLand from "@/assets/images/projects/game-land.png"
+import TodoMate from "@/assets/images/projects/todo-mate.jpg"
 import Image from "next/image"
 const projects = [
     {
@@ -21,8 +24,8 @@ const projects = [
     },
     {
         id: 2,
-        title: "Restaurant",
-        description: "AI-powered analytics platform",
+        title: "Helataurant | Restaurant Website",
+        description: "Restaurant website with online ordering",
         image: Restaurant,
         tech: ["React.js"],
         demoUrl: "https://helataurent.vercel.app/",
@@ -51,22 +54,32 @@ const projects = [
     },
     {
         id: 5,
-        title: "Neon Commerce",
-        description: "E-commerce platform with AR features",
-        image: "/placeholder.svg?height=200&width=300",
-        tech: ["React Native", "AR.js", "Stripe"],
-        demoUrl: "#",
-        githubUrl: "#",
+        title: "Habit Flow | Habit Tracker",
+        description: "A habit tracking app",
+        image: HabitFlow,
+        tech: ["React Native"],
+        demoUrl: "https://github.com/user-attachments/assets/037ce209-0781-4a3e-a515-d99bad54d8b3",
+        githubUrl: "https://github.com/HasinthakaPiyumal/HabitFlow",
         gradient: "from-purple-600/20 to-pink-600/20",
     },
     {
         id: 6,
-        title: "Matrix IDE",
-        description: "Cloud-based development environment",
-        image: "/placeholder.svg?height=200&width=300",
-        tech: ["Monaco Editor", "Docker", "Kubernetes"],
-        demoUrl: "#",
-        githubUrl: "#",
+        title: "TodoMate | Todo App",
+        description: "A modern todo app",
+        image: TodoMate,
+        tech: ["ReactNative", "NativeWind"],
+        demoUrl: "https://github.com/user-attachments/assets/00e3d9a6-a0c2-47d8-843d-58ac004cc43e",
+        githubUrl: "https://github.com/HasinthakaPiyumal/todo_app-rn",
+        gradient: "from-pink-600/20 to-blue-600/20",
+    },
+    {
+        id: 7,
+        title: "GameLand | Sport Equipment Store",
+        description: "A sport equipment store",
+        image: GameLand,
+        tech: ["PHP", "HTML", "CSS", "Stripe"],
+        demoUrl: "https://se-21-php.hasinthaka.com/",
+        githubUrl: "https://github.com/HasinthakaPiyumal/web",
         gradient: "from-pink-600/20 to-blue-600/20",
     },
 ]
@@ -167,6 +180,13 @@ export default function ProjectShowcase() {
           background: radial-gradient(circle, var(--tw-gradient-stops));
         }
       `}</style>
+
+
+            <div className="text-center absolute bottom-8 ml-[50%] transform -translate-x-1/2">
+                <p className="text-gray-400 text-sm px-6 py-3 rounded-lg bg-gray-800/30 inline-block backdrop-blur-sm border border-gray-700/50 max-w-2xl">
+                    <span className="text-blue-400 font-medium">Note:</span> These projects showcase my development capabilities, with some demos hosted on free platforms that may have limited availability.
+                </p>
+            </div>
         </section>
     )
 }
@@ -251,12 +271,13 @@ function ProjectCard({
                 <div className="flex gap-2">
                     <Button
                         size="sm"
+                        onClick={() => window.open(project.demoUrl, "_blank")}
                         className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white border-0"
                     >
                         <Play className="w-4 h-4 mr-2" />
                         View Project
                     </Button>
-                    <Button size="sm" variant="outline" className="border-white/20 text-white hover:bg-white/10">
+                    <Button onClick={() => window.open(project.githubUrl, "_blank")} size="sm" variant="outline" className="border-white/20 text-white hover:bg-white/10">
                         <Github className="w-4 h-4" />
                     </Button>
                 </div>

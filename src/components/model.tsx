@@ -28,6 +28,13 @@ const Model = (props: ModelProps) => {
     const { scene, animations } = useGLTF(file)
     const clone = React.useMemo(() => SkeletonUtils.clone(scene), [scene])
 
+    const [modelLoaded, setModelLoaded] = useState(false);
+    useEffect(() => {
+        document.getElementById('loader')?.classList.add('opacity-0');
+        document.getElementById('loader')?.classList.add('pointer-events-none');
+    }, [modelLoaded]);
+
+
     const [scrollPosition, setScrollPosition] = useState(0);
 
 
@@ -85,6 +92,7 @@ const Model = (props: ModelProps) => {
                     // })
                 }
             }
+            if (!modelLoaded) setModelLoaded(true);
             // nextAction.time = targetFrame / fps
             return () => {
                 nextAction.fadeOut(0.2)
@@ -120,6 +128,7 @@ const Model = (props: ModelProps) => {
         const handleScroll = (): void => {
             const currentPos = props.pageRef.current?.scrollTop || 0;
 
+            if (typeof window === 'undefined') return;
             const windowHeight = window.innerHeight;
             // console.log("Scroll Position:", currentPos, "Window Height:", windowHeight);
 
@@ -134,6 +143,8 @@ const Model = (props: ModelProps) => {
 
         const pageElement = props.pageRef.current;
         pageElement?.addEventListener("scroll", handleScroll);
+
+        console.log("Model loaded 100%")
 
         return () => {
             pageElement?.removeEventListener("scroll", handleScroll);

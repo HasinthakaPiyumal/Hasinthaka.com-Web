@@ -85,6 +85,8 @@ const Model = (props: ModelProps) => {
 
             console.log("Current position:", currentPos);
 
+            if (typeof window === 'undefined') return;
+
             const windowHeight = window.innerHeight;
             console.log("Scroll Position:", currentPos, "Window Height:", windowHeight);
 

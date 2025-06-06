@@ -53,6 +53,7 @@ const Page = () => {
       const difference = currentPos - previous;
 
       setPrevious(currentPos);
+      if (typeof window === 'undefined') return;
       const windowHeight = window.innerHeight;
       console.log("Current position:", currentPos, "Window Height:", windowHeight);
 
