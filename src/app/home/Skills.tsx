@@ -148,7 +148,20 @@ export default function SkillsSection() {
 }
 
 // New component for individual skill card with animation
-function SkillCard({ category, index }: { category: any, index: number }) {
+type Skill = {
+    name: string;
+    icon: React.ReactNode;
+};
+
+type SkillCategory = {
+    category: string;
+    icon: React.ReactNode;
+    skills: Skill[];
+    gradient: string;
+    bgColor: string;
+};
+
+function SkillCard({ category, index }: { category: SkillCategory; index: number }) {
     const [ref, inView] = useInView({
         triggerOnce: true,
         threshold: 0.1,
@@ -175,7 +188,7 @@ function SkillCard({ category, index }: { category: any, index: number }) {
                 </CardHeader>
                 <CardContent>
                     <div className="flex flex-wrap gap-2">
-                        {category.skills.map((skill: any, skillIndex: number) => (
+                        {category.skills.map((skill: Skill, skillIndex: number) => (
                             <motion.div
                                 key={skillIndex}
                                 initial={{ opacity: 0, scale: 0.8 }}
