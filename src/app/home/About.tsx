@@ -102,7 +102,7 @@ const About = ({ imageContainerRef, imageSectionContainerRef, textContainerRef }
                         <span className="text-gray-300">Available for freelance work</span>
                     </div>
                 </div>
-                <div ref={imageSectionContainerRef} className='flex items-center justify-center flex-col bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700/50 ml-12'>
+                <div ref={imageSectionContainerRef} className='hidden sm:flex items-center justify-center flex-col bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700/50 ml-12'>
                     <GlowingEffect
                         blur={0}
                         borderWidth={3}

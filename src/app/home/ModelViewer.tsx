@@ -40,7 +40,7 @@ const ModelViewer = ({ pageRef }: { pageRef: RefObject<HTMLDivElement> }) => {
             {/* <Suspense fallback={<Loader />}> */}
             <group position={[0, 0, 0]}>
                 {MyModel}
-                <Robo scale={0.05} position={[-0.2, -0.2 + previous / window.innerHeight, 0]} />
+                <Robo scale={0.05} position={[-0.2, -0.2 + previous / (window ? window.innerHeight : 1), 0]} />
             </group>
             <Environment preset="night" />
             {/* </Suspense> */}

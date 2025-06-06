@@ -88,7 +88,7 @@ export default function ProjectShowcase() {
     const [hoveredCard, setHoveredCard] = useState<number | null>(null)
 
     return (
-        <section className="relative min-h-screen bg-[#0b0b0f] overflow-hidden py-20">
+        <section className="relative w-full h-full bg-[#0b0b0f] overflow-hidden py-8 sm:py-20">
             {/* Background Effects */}
             <div className="absolute inset-0">
                 <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl animate-pulse" />
@@ -110,10 +110,10 @@ export default function ProjectShowcase() {
                 />
             </div>
 
-            <div className="relative z-10 container mx-auto px-6">
+            <div className="relative z-10 container mx-auto px-4 sm:px-6">
                 {/* Header */}
-                <div className="text-center mb-16">
-                    <div className="text-center mb-12">
+                <div className="text-center sm:mb-16">
+                    <div className="text-center sm:mb-12">
                         <h2 className="text-2xl font-bold text-white mb-2">
                             My <span className="text-blue-400">Projects</span>
                         </h2>
@@ -122,8 +122,25 @@ export default function ProjectShowcase() {
                 </div>
 
                 {/* Scrolling Container */}
+
                 <div className="relative">
-                    <div className="flex gap-8 animate-scroll-diagonal">
+                    <div className="grid grid-cols-2 gap-4 sm:hidden">
+                        {projects.slice(0, 6).map((project, index) => (
+                            <div
+                                key={`first-${project.id}`}
+                                className="flex-shrink-0 hover:rotate-x-0 hover:rotate-y-0 hover:rotate-z-0 transition-transform duration-500 ease-out"
+
+                            >
+                                <ProjectCard
+                                    project={project}
+                                    isHovered={hoveredCard === project.id}
+                                    onHover={() => setHoveredCard(project.id)}
+                                    onLeave={() => setHoveredCard(null)}
+                                />
+                            </div>
+                        ))}
+                    </div>
+                    <div className=" gap-8 animate-scroll-diagonal  hidden sm:flex">
                         {/* First set of cards */}
                         {projects.map((project, index) => (
                             <div
@@ -182,8 +199,8 @@ export default function ProjectShowcase() {
       `}</style>
 
 
-            <div className="text-center absolute bottom-8 ml-[50%] transform -translate-x-1/2">
-                <p className="text-gray-400 text-sm px-6 py-3 rounded-lg bg-gray-800/30 inline-block backdrop-blur-sm border border-gray-700/50 max-w-2xl">
+            <div className="text-center absolute bottom-8 ml-[50%] transform -translate-x-1/2 w-[350px] sm:w-[560px]">
+                <p className="text-gray-400 text-xs sm:text-sm px-2 sm:px-6 py-3 rounded-lg bg-gray-800/30 inline-block backdrop-blur-sm border border-gray-700/50 max-w-2xl">
                     <span className="text-blue-400 font-medium">Note:</span> These projects showcase my development capabilities, with some demos hosted on free platforms that may have limited availability.
                 </p>
             </div>
@@ -205,7 +222,7 @@ function ProjectCard({
     return (
         <div
             className={`
-        relative w-80 h-96 group cursor-pointer transition-all duration-500 ease-out
+        relative w-full h-full md:w-80 md:h-96 group cursor-pointer transition-all duration-500 ease-out
         ${isHovered ? "scale-110 z-20" : "scale-100 z-10"}
       `}
             onMouseEnter={onHover}
@@ -214,29 +231,29 @@ function ProjectCard({
             {/* Card Background with Glow */}
             <div
                 className={`
-        absolute inset-0 rounded-2xl transition-all duration-500
+        absolute inset-0 rounded-xl md:rounded-2xl transition-all duration-500
         bg-gradient-to-br ${project.gradient}
         border border-white/10
         ${isHovered ? "shadow-2xl shadow-blue-500/20 border-white/20" : "shadow-lg shadow-black/20"}
       `}
             >
                 {/* Inner glow effect */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/5 to-transparent" />
+                <div className="absolute inset-0 rounded-xl md:rounded-2xl bg-gradient-to-br from-white/5 to-transparent" />
 
                 {/* Spotlight effect */}
                 <div
                     className={`
           absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2
-          w-32 h-32 bg-white/10 rounded-full blur-2xl transition-opacity duration-500
+          w-16 h-16 md:w-32 md:h-32 bg-white/10 rounded-full blur-2xl transition-opacity duration-500
           ${isHovered ? "opacity-100" : "opacity-0"}
         `}
                 />
             </div>
 
             {/* Card Content */}
-            <div className="relative h-full p-6 flex flex-col">
+            <div className="relative h-full p-3 md:p-6 flex flex-col">
                 {/* Project Image */}
-                <div className="relative h-40 mb-4 rounded-lg overflow-hidden bg-gray-900/50">
+                <div className="relative h-20 md:h-40 mb-2 md:mb-4 rounded-lg overflow-hidden bg-gray-900/50">
                     <Image
                         src={project.image}
                         alt={project.title}
@@ -249,36 +266,46 @@ function ProjectCard({
 
                 {/* Project Info */}
                 <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-blue-300 transition-colors">
+                    <h3 className="text-xs mb-2 text-center sm:text-left sm:font-bold md:text-2xl text-white sm:mb-0.5 md:mb-2 group-hover:text-blue-300 transition-colors">
                         {project.title}
                     </h3>
-                    <p className="text-gray-400 text-sm mb-4 leading-relaxed">{project.description}</p>
+                    <p className=" text-gray-400 text-xs md:text-sm mb-1 md:mb-4 leading-relaxed line-clamp-2 md:line-clamp-none">{project.description}</p>
 
-                    {/* Tech Stack */}
-                    <div className="flex flex-wrap gap-2 mb-4">
-                        {project.tech.map((tech) => (
+                    {/* Tech Stack - Hide on smallest screens */}
+                    <div className="hidden sm:flex flex-wrap gap-1 md:gap-2 mb-1 md:mb-4">
+                        {project.tech.slice(0, 2).map((tech) => (
                             <span
                                 key={tech}
-                                className="px-2 py-1 text-xs bg-white/10 text-blue-300 rounded-full border border-white/20"
+                                className="px-1.5 py-0.5 md:px-2 md:py-1 text-[10px] md:text-xs bg-white/10 text-blue-300 rounded-full border border-white/20"
                             >
                                 {tech}
                             </span>
                         ))}
+                        {project.tech.length > 2 && (
+                            <span className="px-1.5 py-0.5 md:px-2 md:py-1 text-[10px] md:text-xs bg-white/10 text-blue-300 rounded-full border border-white/20">
+                                +{project.tech.length - 2}
+                            </span>
+                        )}
                     </div>
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex gap-2">
+                <div className="flex gap-1 md:gap-2 mt-auto">
                     <Button
-                        size="sm"
-                        onClick={() => window.open(project.demoUrl, "_blank")}
-                        className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white border-0"
+                        onClick={() => { if (window) window.open(project.demoUrl, "_blank") }}
+                        className="flex-1 h-7 md:h-auto text-xs md:text-sm bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white border-0 px-2 md:px-3"
                     >
-                        <Play className="w-4 h-4 mr-2" />
-                        View Project
+                        <Play className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" />
+                        <span className="hidden xs:inline">View</span>
+                        <span className="hidden md:inline"> Project</span>
                     </Button>
-                    <Button onClick={() => window.open(project.githubUrl, "_blank")} size="sm" variant="outline" className="border-white/20 text-white hover:bg-white/10">
-                        <Github className="w-4 h-4" />
+                    <Button
+                        onClick={() => { if (window) window.open(project.githubUrl, "_blank") }}
+
+                        variant="outline"
+                        className="h-7 md:h-auto border-white/20 text-white hover:bg-white/10 px-2"
+                    >
+                        <Github className="w-3 h-3 md:w-4 md:h-4" />
                     </Button>
                 </div>
             </div>
@@ -286,7 +313,7 @@ function ProjectCard({
             {/* Hover Glow Effect */}
             <div
                 className={`
-        absolute -inset-1 rounded-2xl transition-opacity duration-500 -z-10
+        absolute -inset-1 rounded-xl md:rounded-2xl transition-opacity duration-500 -z-10
         bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-pink-600/20 blur-xl
         ${isHovered ? "opacity-100" : "opacity-0"}
       `}

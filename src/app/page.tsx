@@ -3,12 +3,18 @@ import React, { useEffect, useMemo, useRef, useState } from 'react'
 import Hero from './home/Hero'
 import { FloatingNav } from '@/components/ui/floating-navbar'
 import { IconHome, IconUser, IconMessage, IconCode } from '@tabler/icons-react'
-import ModelViewer from './home/ModelViewer'
+import dynamic from 'next/dynamic';
 import About from './home/About'
 import gsap from 'gsap'
 import Skills from './home/Skills'
 import ContactSection from './home/Contact'
 import ProjectShowcase from './home/Projects'
+
+// Import your 3D model component with dynamic import and SSR disabled
+const ModelViewer = dynamic(() => import('./home/ModelViewer'), {
+  ssr: false
+});
+
 const Page = () => {
   const navItems = [
     {
@@ -167,7 +173,7 @@ const Page = () => {
         <FloatingNav navItems={navItems} visible={navbarVisibility} />
       </div>
 
-      <div ref={modalViewRef} className={`${modalVisible ? 'top-0 right-0' : 'top-full right-full'} w-[50%] h-screen fixed  z-10 pointer-events-none`}>
+      <div ref={modalViewRef} className={`${modalVisible ? 'top-0 right-0' : 'top-full right-full'} w-[50%] h-screen hidden sm:block fixed z-10 pointer-events-none`}>
         {/* <ModelViewer scrollPosition={previous} /> */}
         {MemoizedModelViewer}
       </div>

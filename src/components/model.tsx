@@ -128,9 +128,8 @@ const Model = (props: ModelProps) => {
         const handleScroll = (): void => {
             const currentPos = props.pageRef.current?.scrollTop || 0;
 
-            if (typeof window === 'undefined') return;
-            const windowHeight = window.innerHeight;
-            // console.log("Scroll Position:", currentPos, "Window Height:", windowHeight);
+            // Check if window exists before accessing it
+            const windowHeight = typeof window !== 'undefined' ? window.innerHeight : 0;
 
             if (currentPos === 0) {
                 setAnimation(AnimationNames.Waving);

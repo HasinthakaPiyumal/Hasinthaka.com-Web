@@ -10,6 +10,9 @@ import ModelViewer from './ModelViewer'
 import { Button } from '@/components/ui/button'
 import { IconBrandWhatsapp } from '@tabler/icons-react'
 
+import Me from "@/assets/images/hasinthaka.jpg"
+import Image from 'next/image'
+
 const TypeWriterEffect = () => {
 
     const words = ["Mobile Developer", "Machine Learning Enthusiast", "Full Stack Developer"]
@@ -53,7 +56,7 @@ const TypeWriterEffect = () => {
         return () => clearTimeout(timer)
     }, [currentText, currentWordIndex, isDeleting, typingSpeed, words])
 
-    return <h1 className="text-3xl font-bold mb-4">
+    return <h1 className="text-xl sm:text-3xl font-bold mb-4 text-center sm:text-left">
         I&apos;m a{" "}
         <span className="bg-clip-text text-primary inline-block min-w-0">
             {currentText}
@@ -79,31 +82,49 @@ const Hero = () => {
                        
                     </BackgroundBeamsWithCollision> */}
                     <div className='h-screen w-full flex items-between justify-center'>
-                        <div className="flex items-center justify-between w-full max-w-7xl">
-                            <div className='text-white w-[50%]'>
+                        <div className="flex items-center justify-center sm:justify-between flex-col sm:flex-row w-full max-w-7xl">
+                            <div
+                                className='sm:hidden w-[200px] h-[200px] relative rounded-full overflow-hidden border-4 border-blue-400/30 transition-all duration-300 hover:border-blue-400/80 hover:shadow-lg hover:shadow-blue-500/20 group cursor-pointer'
+                            >
+                                <Image
+                                    src={Me}
+                                    alt="About Me"
+                                    className="absolute transition-transform duration-500 group-hover:scale-110"
+                                    style={{
+                                        transform: `translate(0, -15px)`,
+                                        transformOrigin: 'center',
+                                    }}
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-blue-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            </div>
+                            <div className='text-white w-full sm:w-[50%] px-4 sm:px-4'>
                                 <div className='flex h-[60px]'></div>
-                                <h1 className='text-6xl font-bold mb-4'>
+                                <h1 className='text-4xl sm:text-6xl font-bold mb-4 text-center sm:text-left'>
                                     Hi, It&apos;s{" "}
                                     <span className='text-primary'>
                                         Hasinthaka
                                     </span>
                                 </h1>
                                 <TypeWriterEffect />
-                                <p className="text-gray-300 max-w-xl text-base font-light">
+                                <p className="text-gray-300 max-w-xl text-base font-light text-center sm:text-left">
                                     Software Engineering undergraduate at University of Kelaniya, passionate about tech and innovation.
                                 </p>
 
-                                <div className="flex gap-4 mt-12">
-                                    <Button>
+                                <div className="flex gap-4 mt-12 justify-center sm:justify-start">
+                                    <Button onClick={() => {
+                                        if (window) window.open('/CV-Hasinthaka.pdf', '_blank')
+                                    }}>
                                         Download CV
                                     </Button>
-                                    <Button variant={'outline'}>
+                                    <Button variant={'outline'} onClick={() => {
+                                        if (window) window.open('https://wa.me/94763215389', '_blank')
+                                    }}>
                                         <IconBrandWhatsapp />
                                         Contact
                                     </Button>
                                 </div>
                             </div>
-                            <div className='text-white w-[50%]'>
+                            <div className='text-white w-[50%] h-[80px]'>
 
                             </div>
                         </div>
