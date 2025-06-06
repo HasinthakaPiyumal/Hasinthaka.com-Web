@@ -7,8 +7,8 @@ import ModelViewer from './home/ModelViewer'
 import About from './home/About'
 import gsap from 'gsap'
 import Skills from './home/Skills'
-import ProjectsSection from './home/Projects'
 import ContactSection from './home/Contact'
+import ProjectShowcase from './home/Projects'
 const Page = () => {
   const navItems = [
     {
@@ -155,7 +155,7 @@ const Page = () => {
       </section>
       <section id="projects" className="h-screen flex items-center justify-center snap-start relative z-10">
         {/* <h1 className="text-white text-4xl font-bold">Project Section</h1> */}
-        <ProjectsSection />
+        <ProjectShowcase />
       </section>
       <section id="projects" className="h-screen flex items-center justify-center snap-start relative z-10">
         {/* <h1 className="text-white text-4xl font-bold">Contact</h1> */}

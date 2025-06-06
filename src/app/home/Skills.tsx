@@ -148,7 +148,7 @@ export default function SkillsSection() {
 }
 
 // New component for individual skill card with animation
-function SkillCard({ category, index }) {
+function SkillCard({ category, index }: { category: any, index: number }) {
     const [ref, inView] = useInView({
         triggerOnce: true,
         threshold: 0.1,
@@ -175,7 +175,7 @@ function SkillCard({ category, index }) {
                 </CardHeader>
                 <CardContent>
                     <div className="flex flex-wrap gap-2">
-                        {category.skills.map((skill, skillIndex) => (
+                        {category.skills.map((skill: any, skillIndex: number) => (
                             <motion.div
                                 key={skillIndex}
                                 initial={{ opacity: 0, scale: 0.8 }}
