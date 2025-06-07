@@ -26,6 +26,10 @@ export function PostHogProvider({ children }: { children: React.ReactNode }) {
       capture_pageview: false,
       capture_pageleave: true,
       capture_exceptions: true,
+      session_recording: {
+        maskAllInputs: true,
+        blockClass: 'ph-no-capture',
+      },
       debug: process.env.NODE_ENV === "development",
     })
   }, [])

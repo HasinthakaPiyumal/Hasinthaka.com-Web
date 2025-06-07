@@ -149,10 +149,10 @@ const Page = () => {
   const MemoizedModelViewer = useMemo(() => <ModelViewer pageRef={pageRef} />, []);
   return (
     <div ref={pageRef} className="h-screen w-full overflow-x-hidden overflow-y-scroll snap-y snap-mandatory">
-      <section id='home' className='w-full h-screen snap-start'>
+      <section id='home' className='w-full h-screen snap-start ph-no-capture'>
         <Hero />
       </section>
-      <section id="about" className="h-screen flex items-center justify-center snap-start relative z-10">
+      <section id="about" className="h-screen flex items-center justify-center snap-start relative z-10 ph-no-capture">
         {/* <h1 className="text-white text-4xl font-bold">About Section</h1> */}
         <About imageContainerRef={imageContainerRef} imageSectionContainerRef={imageSectionContainerRef} textContainerRef={textContainerRef} />
       </section>
