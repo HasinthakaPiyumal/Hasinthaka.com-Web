@@ -61,7 +61,7 @@ const Page = () => {
 
       setPrevious(currentPos);
       if (typeof window === 'undefined') return;
-      const windowHeight = window.innerHeight;
+      const windowHeight = window.innerHeight > 10 ? window.innerHeight - 10 : window.innerHeight;
       console.log("Current position:", currentPos, "Window Height:", windowHeight);
 
       if (currentPos > windowHeight * 1.2) {
