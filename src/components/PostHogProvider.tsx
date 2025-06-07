@@ -21,7 +21,7 @@ function SuspendedPostHogPageView() {
 export function PostHogProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     posthog.init('phc_A5kcMXBYlUbVZIFMG3tthbDBcyqXVEHrOMrhxd8MikR', {
-      api_host: "/ingest",
+      api_host: "https://app.posthog.com",
       ui_host: "https://us.posthog.com",
       capture_pageview: false,
       capture_pageleave: true,
