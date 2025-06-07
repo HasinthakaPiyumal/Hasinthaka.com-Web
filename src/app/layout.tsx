@@ -9,8 +9,61 @@ import ModelViewer from "./home/ModelViewer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Hasinthaka - Portfolio",
-  description: "Personal portfolio website of Hasinthaka",
+  title: "Hasinthaka Piyumal | Machine Learning Enthusiast",
+  keywords: [
+    "Hasinthaka Piyumal",
+    "Portfolio",
+    "Machine Learning",
+    "Web Development",
+    "AI",
+    "Software Engineer",
+    "Data Science",
+    "Python",
+    "JavaScript",
+    "React",
+    "Next.js",
+    "Node.js",
+    "Full Stack Developer",
+    "AI Engineer",
+    "Data Engineer",
+    "Cloud Computing",
+    "DevOps",
+    "Open Source",
+    "Tech Enthusiast",
+    "Personal Portfolio",
+    "Web Portfolio",
+    "Software Portfolio",
+    "AI Portfolio",
+    "Machine Learning Portfolio",
+    "Data Science Portfolio",
+    "3d Portfolio Website",
+    "3D Portfolio",
+    "3D Web Development",
+    "3D Web Portfolio",
+  ],
+  authors: [
+    {
+      name: "Hasinthaka Piyumal",
+      url: "https://hasinthaka.com",
+    },
+  ],
+  openGraph: {
+    title: "Hasinthaka Piyumal | Machine Learning Enthusiast",
+    description: "Explore the portfolio of Hasinthaka Piyumal, a machine learning enthusiast and software engineer. Discover projects, skills, and insights into AI and web development.",
+    url: "https://hasinthaka.com",
+    siteName: "Hasinthaka Piyumal",
+    images: [
+      {
+        url: "https://hasinthaka.com/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Hasinthaka Piyumal Portfolio",
+      },
+    ],
+    type: "website",
+  },
+  icons: { icon: "favicon.svg" },
+  description: "Hasinthaka Piyumal is a machine learning enthusiast and software engineer. Explore his portfolio to discover projects, skills, and insights into AI and web development.",
 };
 
 export default function RootLayout({
