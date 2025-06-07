@@ -9,6 +9,7 @@ import gsap from 'gsap'
 import Skills from './home/Skills'
 import ContactSection from './home/Contact'
 import ProjectShowcase from './home/Projects'
+import posthog from 'posthog-js'
 
 // Import your 3D model component with dynamic import and SSR disabled
 const ModelViewer = dynamic(() => import('./home/ModelViewer'), {
@@ -71,6 +72,7 @@ const Page = () => {
           ease: "power2.inOut",
           onComplete: () => {
             setModalVisible(false);
+            posthog.startSessionRecording()
           }
         });
       }
@@ -103,6 +105,7 @@ const Page = () => {
         }
 
       } else {
+        posthog.stopSessionRecording()
         gsap.killTweensOf(modalViewRef.current)
         gsap.killTweensOf(imageContainerRef.current)
         setModalVisible(true);
