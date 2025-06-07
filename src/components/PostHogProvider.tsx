@@ -23,7 +23,7 @@ export function PostHogProvider({ children }: { children: React.ReactNode }) {
     posthog.init('phc_A5kcMXBYlUbVZIFMG3tthbDBcyqXVEHrOMrhxd8MikR', {
       api_host: "https://app.posthog.com",
       ui_host: "https://us.posthog.com",
-      capture_pageview: false,
+      capture_pageview: true,
       capture_pageleave: true,
       capture_exceptions: true,
       session_recording: {
